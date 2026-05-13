@@ -17,7 +17,7 @@ Provide a brief description of what this module does based on the project text. 
 | **Student 1 (Leader)** | Integration & Architecture | Component Diagrams, API Specs, Team Coordination | [Link] |
 | **Student 2** | Requirements & Analysis | Functional Requirements, Use Case Diagrams | [Link] |
 | **Student 3** | Process Modeling | Activity Diagrams, Business Rules Validation | [Link] |
-| **Student 4** | Data Design | ERD, Database Schema, Class Diagrams | [Link] |
+| **Student 4** | Data Design | ERD, Database Schema, Class Diagrams | [https://github.com/Hussein-Resha] |
 | **Student 5 (Optional)** | Interaction Design | Sequence Diagrams, Logic Flow | [Link] |
 | **Student 6 (Optional)** | UI/UX & Frontend | Wireframes, Interface Logic, User Stories | [Link] |
 

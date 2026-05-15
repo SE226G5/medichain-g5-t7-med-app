@@ -14,7 +14,7 @@ Provide a brief description of what this module does based on the project text. 
 
 | Member Name | Primary Responsibility | Assigned Tasks (Examples) | GitHub Profile |
 | :--- | :--- | :--- | :--- |
-| **Student 1 (Leader)** | Integration & Architecture | Component Diagrams, API Specs, Team Coordination | [Link] |
+| **Melad Rajoh** | Integration & Architecture | Component Diagrams, API Specs, Team Coordination | [https://github.com/meladrajoh ] |
 | **Assead Ibrahim** | Requirements & Analysis | Functional Requirements, Use Case Diagrams | [https://github.com/AsseadIbrahim] |
 | **Yousef Abbas** | Process Modeling | Activity Diagrams, Business Rules Validation | [https://github.com/YousefAbaas] |
 | **Hussein Resha** | Data Design | ERD, Database Schema, Class Diagrams | [https://github.com/Hussein-Resha] |

@@ -26,7 +26,7 @@ Provide a brief description of what this module does based on the project text. 
 ## 🚀 Analysis & Design Progress
 - [ ] **Requirement Elicitation:** Completed list of FRs/NFRs.
 - [ ] **UML Behavioral Diagrams:** Use Case and Activity Diagrams.
-- [ ] **UML Structural Diagrams:** ERD and Class Diagrams.
+- [X] **UML Structural Diagrams:** ERD and Class Diagrams.
 - [ ] **Dynamic Modeling:** Sequence Diagrams for core processes.
 - [ ] **Interface Design:** Low-fidelity Wireframes.
 

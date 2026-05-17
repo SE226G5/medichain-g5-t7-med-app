@@ -79,7 +79,12 @@
 * **Instruction:** Specify quantitative limits. (e.g., "The module must return query results in under 2 seconds for up to 50 concurrent users").
 
 ### 3.4 Logical Database Requirements
-* **Instruction:** Describe the data entities managed by your module. If you are using a shared database, specify which tables your team is responsible for. (Include ERD models in the Appendix).
+
+Architectural Database Summary
+The tracking database enforces dynamic data integrity across three distinct, normalized operational layers:
+1. **Core Sample Registry (`Samples`):** Acts as the master directory entry for any medical specimen entering the tracking module. It maps the absolute unique payload key (`sample_id`) to the current global state of the workflow and locks the current technician identity.
+2. **State Machine Logging (`Tracking_Logs`):** A strictly linear transaction table capturing every internal handoff (Receipt $\rightarrow$ Analysis $\rightarrow$ Clinical Review). It implements database-level timestamping (`start_time`, `end_time`) to compute precise turnaround times (TAT) and triggers an automated warning flag if predefined phase thresholds are violated.
+3. **Clinical Payload Datastore (`Test_Results`):** Deconstructs incoming structured payloads (such as the integration JSON schema) into atomic test entities. This normalizes relational storage for items like test types, quantitative numerical data, and safety boundaries before medical validation.
 
 ### 3.5 Software System Attributes
 * **Instruction:** Define the Non-Functional Requirements (NFRs) for your module:

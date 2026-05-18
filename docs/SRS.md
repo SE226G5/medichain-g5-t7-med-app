@@ -327,7 +327,7 @@ Component Diagram & API Specs (Integration Architecture)
 
 [<img width="2281" height="1296" alt="Module7 drawio" src="https://github.com/user-attachments/assets/8c62c82b-99bb-4d30-8582-ea0a40f176ca" />]
 
-[]
+[https://drive.google.com/file/d/1MiZ1TGiLtLRJkO_8JVupdeM_gyNcouH2/view?usp=drive_link]
 
 
 Use Case Diagram (Requirements & Analysis)

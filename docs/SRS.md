@@ -98,7 +98,11 @@ https://github.com/SE226G5/medichain-g5_t4_ref_trk
 *    
 *   **2.1.2 User Interfaces:** [Describe the logical characteristics of your UI. Are you following a shared design system?].
 *   
-*   **2.1.3 Hardware Interfaces:** [None.the system operates through standard computer and tablet screens.].
+*   **2.1.3 Hardware Interfaces:** [​The Medical Approval & Locking module interfaces with the following laboratory and hospital hardware components:
+
+​Barcode Scanners: Integrated with the laboratory equipment interface to automatically scan tube barcodes, ensuring the matching of physical blood/tissue samples with the digital patient record before displaying results for approval.
+
+​Authentication Tokens/Keycards: Supports physical RFID/smart card readers attached to terminal computers for secure biometric or card-based fast login, mandatory for Laboratory Doctors prior to authorizing a clinical result approval.].
 *   
 *   **2.1.4 Software Interfaces
 The Medical Approval & Locking Subsystem (MED-APP) interfaces with standard server-side enterprise technologies and secure cryptographic libraries to guarantee absolute row-level locking, unalterable audit trails, and secure data publishing:

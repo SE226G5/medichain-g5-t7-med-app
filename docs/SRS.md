@@ -382,7 +382,8 @@ Use Case Diagram (Requirements & Analysis)
 
 Activity Diagram (Process Modeling)
 
-[activity diagram image here – Student 3 Task]
+[ <img width="612" height="819" alt="SAVE_٢٠٢٦٠٥١٨_٢٢٤٤٢٣" src="https://github.com/user-attachments/assets/4dd9acdd-ed3b-4373-ace6-0e397d2ef4b9" />
+ ]
 [https://drive.google.com/file/d/1H7IVp_2Wp6LOK0YOFpdjPmDlcAp_rIhT/view?usp=drivesdk ]
 
 Data Design & ERD Schema (Database Design) 

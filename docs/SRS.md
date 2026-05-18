@@ -369,7 +369,7 @@ Data Design & ERD Schema (Database Design)
 
 Sequence Diagram (Interaction Design)
 
-[[sequence diagram image here – Student 5 Task](https://github.com/SE226G5/medichain-g5-t7-med-app/blob/main/docs/images/IMG_20260518_175230_257.jpg)]
+[(https://github.com/SE226G5/medichain-g5-t7-med-app/blob/main/docs/images/IMG_20260518_175230_257.jpg)]
 [https://drive.google.com/file/d/1TceLXdOpNG5RXakv4Ry1kwcoUre0QJXS/view?usp=drivesdk]
 
 UI/UX Wireframes (Frontend)

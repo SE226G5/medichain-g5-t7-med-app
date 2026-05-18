@@ -1,19 +1,30 @@
 ﻿# Software Requirements Specification (SRS)
-## Project: [Insert the Parent System Name, e.g., Hospital ERP System]
-## Module/Subsystem: [Insert Your Module Name, e.g., Laboratory Management, Clinical System, OR "Master Integration System" if you are the integration team]
+## Project: [MediChain (Medical Laboratory Chain Management System)]
+## Module/Subsystem: [Medical Approval & Locking Subsystem (MED-APP – Module 7)]
 **Version:** 1.0  
-**Date:** [YYYY-MM-DD]
+**Date:** [2026-05-15]
 
 ---
 
 ## 1. Introduction
 ### 1.1 Purpose
-* **Instruction:** Describe the specific purpose of this document. Who is the intended audience? If you are a subsystem team, explain how this document defines your specific module. If you are the Integration Team (Team Leaders), explain how this document governs the entire system.
+* This document defines the detailed functional and non-functional requirements for the MED-APP system.
+
+Integration Team Perspective
+
+As the Integration Team, this document not only describes Module 7 independently, but also governs and organizes the mechanisms of data flow, integration points, and security between our subsystem and the other subsystems (LAB-TRK and REF-TRK) to ensure consistency throughout the medical sample lifecycle.
 
 ### 1.2 Scope
-* **Instruction:** Define the boundaries of your system. 
-  * What are the core goals and benefits?
-  * **Crucial:** Explicitly list what your system *will* do and what it *will NOT* do to prevent overlap with other teams.
+* This system governs and authorizes laboratory medical test results after they are released by the laboratory and before they are published.
+
+What the system WILL do:
+Provide a dedicated and secure interface for laboratory doctors to review, sign, and approve results.
+Automatically and immediately lock laboratory records in the database after approval to prevent further modification.
+Manage a strict override workflow when modifications to locked values are requested, including documenting the reason, user, and timestamp.
+Generate a final secure read-only PDF medical report.
+What the system WILL NOT do:
+The system will not enter technical laboratory test values (this is handled by Module 6 – LAB-TRK).
+The system will not process patient financial payments (this is handled by Module 5 – REV-BIL).
 
 ### 1.3 Definitions, Acronyms, and Abbreviations
 This section establishes a shared vocabulary for all stakeholders — developers, testers,
@@ -25,23 +36,36 @@ This section establishes a shared vocabulary for all stakeholders — developers
 ERP     Enterprise Resource Planning. An integrated software system that manages core business processes. MediChain is a hospital-specific ERP.
 
 SRS       	Software Requirements Specification. This document — a formal description of the system's functional and non-functional requirements, following IEEE 830 standard.
+
 UML	   Unified Modeling Language. A standardized visual notation for software design. Used here for Activity Diagrams (behavioral diagrams).
+
 Activity Diagram	   A UML behavioral diagram that shows the sequential and parallel flow of actions across multiple system actors, using swimlanes, decision nodes, and guard conditions.
+
 Swimlane	    A vertical partition in an activity diagram that assigns responsibility for each action to a specific actor (e.g., Patient, Appointment System, Database, External System).
+
 Decision Node    	A diamond-shaped node in an activity diagram representing a Boolean condition. Control flow branches into paths labeled with guard conditions [Yes] / [No].
+
 Guard Condition	   The Boolean expression labeling a transition from a decision node (e.g., [Available] or [Not Available]). Determines which path control flow follows.
+
 Business Rule (BR)	A domain-level constraint that the system must enforce before permitting a state change. Identified in this document as BR-01 through BR-10.
+
 NFR	   Non-Functional Requirement. A system quality attribute that constrains how the system performs its functions (e.g., response time, reliability, maintainability).
+
 REST API	Representational State Transfer Application Programming Interface. The communication protocol used between the Appointments module and external systems.
+
 Race Condition    	A concurrency defect where two users attempt to book the same time slot simultaneously, potentially resulting in a double-booking. Prevented by BR-06 (atomic slot lock).
+
 Process Modeling	The role responsible for defining, drawing, and documenting the process flows, business rules, and validation logic for a given system module.
+
 ### 1.4 References
-* **Instruction:** List all referenced documents. This must include:
-  * IEEE 830 Standard.
-  * Links to shared architectural documents or API contracts agreed upon with the Integration Team.
+* IEEE 830 Standard for Software Requirements Specification.
+General Project Specification Document for MediChain.
+Organization Repository Link: [ Main Repository Link Here]
 
 ### 1.5 Overview
-* **Instruction:** Briefly explain how the rest of this SRS document is organized.
+* Section 2 presents the overall system description and interface integrations.
+Section 3 focuses on software features and Agile User Stories.
+Section 4 contains appendices including architectural diagrams and API specifications.
 
 ---
 

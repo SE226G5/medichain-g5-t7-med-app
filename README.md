@@ -28,7 +28,7 @@ Provide a brief description of what this module does based on the project text. 
 - [X] **UML Behavioral Diagrams:** Use Case and Activity Diagrams.
 - [X] **UML Structural Diagrams:** ERD and Class Diagrams.
 - [ ] **Dynamic Modeling:** Sequence Diagrams for core processes.
-- [ ] **Interface Design:** Low-fidelity Wireframes.
+- [X] **Interface Design:** Low-fidelity Wireframes.
 
 ---
 

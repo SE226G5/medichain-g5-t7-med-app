@@ -96,24 +96,11 @@ Team 4 Repository Link
 https://github.com/SE226G5/medichain-g5_t4_ref_trk
 *    ].
 *    
-*   **2.1.2 User Interfaces:** [The user interface of the MED-APP module operates on a State-Driven UI mechanism. The behavioral logic, interactivity, and visibility of screen elements dynamically change based on the medical test result status as follows:
-
-1. Pre-Approval State (Status: Pending Approval)
-Input Fields Behavior: All laboratory data fields containing test parameters and results remain active and open for review. The physician can freely scroll, inspect, or adjust inputs before final verification.
-
-Action Elements: A prominent, high-visibility "Medical Approval" button (e.g., highlighted in Green or Blue) is enabled at the bottom or end of the result row.
-
-2. Approved & Locked State (Status: Approved)
-Input Fields Behavior: Immediately upon clicking the "Medical Approval" button, the system triggers an UI state transition. All data entry fields and text boxes dynamically shift to disabled=true. They turn light gray and become strictly Read-Only to mitigate any risk of accidental edits or unauthorized tapering.
-
-Action Elements: The "Medical Approval" button is hidden from the layout. It is replaced by a "Request Modification" button (styled in an amber or red warning color).
-
-3. Modification Dialog Logic (State: Modification Request Modal)
-Trigger Mechanism: Clicking the "Request Modification" button overlays a secure, focused Pop-up Modal window on top of the locked screen.
-
-Form Validation: The "Submit Request" button inside this modal is programmatically disabled by default. The UI logical rule enforces that the button remains unclickable until the user types a detailed justification into the "Reason for Modification" text area (minimum length constraint: 15 characters).
-
-Automatic Auditing: Once the validation passes and the request is sent, the interface automatically appends the active session's User ID and the current precise System Timestamp to the payload before submission.].
+*   **2.1.2 User Interfaces:** [The graphical user interface for this module follows a unified, shared design system tailored specifically for laboratory doctors to ensure maximum speed, efficiency, and precision when handling sensitive medical data:"
+Approval Dashboard: Displays a comprehensive list of completed medical test results awaiting official verification, sorted automatically by priority level and sample collection time.
+Result Review Screen: Features a comparative data table displaying the patient’s current test values alongside standard reference ranges, with out-of-range critical values dynamically highlighted in an alert color (e.g., bright red).
+Locking Confirmation Dialog: A secure pop-up modal that triggers when the doctor clicks "Approve & Lock", presenting a summary of the data and requiring a final confirmation or digital signature.
+Result Modification Workflow Screen: A restricted interface that appears only when an authorized user attempts to unlock a sealed record, forcing them to fill out a mandatory justification input field.].
 *   
 *   **2.1.3 Hardware Interfaces:** [​The Medical Approval & Locking module interfaces with the following laboratory and hospital hardware components:
 
@@ -161,7 +148,9 @@ The Medical Approval & Locking Subsystem (MED-APP) interfaces with standard serv
 * **Instruction:** This section translates traditional functional requirements into Agile User Stories. Every feature must be traceable to the project management board.
 
 ### 3.1 External Interface Requirements
-* Detailed architecture, endpoint links, and JSON request/response formats are fully documented in Appendix A
+* Pre-Approval Validation Logic: The interface strictly disables the "Approve" button if any required test result fields are empty or if the payment/billing coverage status has not been verified (integrated with the Billing Module).  
+Automated Locking Logic: The moment the laboratory doctor clicks "Confirm Approval", the interface logic immediately converts all data input fields from "Editable" to "Read-Only" mode across the UI.  
+Modification Request Logic: When requesting an edit on a locked file, the "Save Changes" button remains completely disabled until the "Reason for Modification" text field receives a minimum of 15 characters, while automatically logging user metadata in the background.*
 ### 3.2 System Features & User Stories
 * **Instruction:** Organize your requirements by Feature. For each feature, write the underlying requirements as User Stories and link them to your GitHub Issues.
 

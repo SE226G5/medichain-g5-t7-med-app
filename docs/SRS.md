@@ -315,22 +315,29 @@ Response (200 OK)
 Component Diagram & API Specs (Integration Architecture)
 
 [component diagram image here – Student 1 Task (Team Leader)]
+[component diagram link here – Student 1 Task (Team Leader)]
+
 
 Use Case Diagram (Requirements & Analysis)
 
-[use case diagram here – Student 2 Task]
+[use case diagram image here – Student 2 Task]
+[use case diagram link here – Student 2 Task]
+
 
 Activity Diagram (Process Modeling)
 
-[activity diagram here – Student 3 Task]
+[activity diagram image here – Student 3 Task]
+[activity diagram link here – Student 3 Task]
 
 Data Design & ERD Schema (Database Design)
 
-[database schema diagram here – Student 4 Task]
+[database schema diagram image here – Student 4 Task]
+[database schema diagram link here – Student 4 Task]
 
 Sequence Diagram (Interaction Design)
 
-[sequence diagram here – Student 5 Task]
+[sequence diagram image here – Student 5 Task]
+[sequence diagram link here – Student 5 Task]
 
 UI/UX Wireframes (Frontend)
 

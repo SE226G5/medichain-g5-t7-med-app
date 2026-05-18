@@ -239,7 +239,6 @@ Cancellation clarity	                             The UI must display the 2-hour
 ## 4. Appendices
 ### Appendix A: Glossary & Models
 
-<img width="764" height="450" alt="ERD" src="https://github.com/user-attachments/assets/7b5100a4-4adc-4136-a931-c415b17eceb3" />
 
 
 
@@ -344,8 +343,8 @@ Activity Diagram (Process Modeling)
 
 Data Design & ERD Schema (Database Design)
 
-[database schema diagram image here – Student 4 Task]
-[database schema diagram link here – Student 4 Task]
+[<img width="764" height="450" alt="ERD" src="https://github.com/user-attachments/assets/7b5100a4-4adc-4136-a931-c415b17eceb3" />]
+[https://drive.google.com/file/d/19TUzbkHyBE4hMii8rerfndmvbH20hMoG/view?usp=sharing]
 
 Sequence Diagram (Interaction Design)
 

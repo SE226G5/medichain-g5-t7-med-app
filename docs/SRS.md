@@ -121,7 +121,13 @@ The Medical Approval & Locking Subsystem (MED-APP) interfaces with standard serv
 
 ​Asynchronous Integration: Uses a message queue broker (e.g., RabbitMQ or Kafka) to communicate asynchronously with external systems, such as triggering the reporting service to compile the read-only PDF document once a result is locked.].
 *   
-*   **2.1.6 Memory & Operational Constraints:** [State minimum RAM, storage, and normal operating assumptions].
+*   **2.1.6 Memory & Operational Constraints:** [​The execution environment of this subsystem must adhere to the following baseline operational thresholds to prevent bottlenecks during approval surges:
+
+​Memory (RAM): The server-side module container requires a dedicated allocation of a minimum of 4 GB RAM to concurrently process intense workflows (such as heavy data verification and multi-user lock actions).
+
+​Storage Capacity: The storage microservice must allocate an initial base of 50 GB of high-speed SSD storage space, growing dynamically, exclusively for archiving the generated read-only immutable PDF clinical reports and historical audit logs.
+
+​Execution Timeout: Any approval validation process or locking API pipeline must terminate and rollback transaction states if it exceeds an operational execution boundary of 5 seconds.].
 
 ### 2.2 Product Functions
 * **Instruction:** Provide a high-level, bulleted summary of the major functions your software performs. Do not go into deep detail here (save it for Section 3).

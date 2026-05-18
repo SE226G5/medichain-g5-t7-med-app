@@ -214,7 +214,7 @@ Business rule isolation	Each business rule (BR-01 through BR-10) must be impleme
 Attribute	                                         Requirement
 Authentication                	    All API endpoints for booking, modifying, or cancelling appointments                                         must require a valid authenticated session token. Unauthenticated                                            requests must be rejected with HTTP 401.
 
-Authorization	       Patients may only access their own appointment records. Reception staff may access                           all patient appointments. The "Manager" privilege override in BR-08 must be enforced                         server-side, not client-side.
+Authorization	                    Patients may only access their own appointment records. Reception staff                                      may access all patient appointments. The "Manager" privilege override in                                     BR-08 must be enforced  server-side, not client-side.
 
 Input validation	     All incoming request parameters (patient ID, doctor ID, appointment datetime) must                           be validated against expected types and ranges before any business rule is                                   evaluated.
 

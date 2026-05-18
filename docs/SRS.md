@@ -113,7 +113,13 @@ The Medical Approval & Locking Subsystem (MED-APP) interfaces with standard serv
     * *Cryptographic Signing Component:* System.Security.Cryptography framework utilized to apply digital signatures (SHA-256 hashing) to individual generated PDF reports, ensuring file authenticity for consuming external systems.
 * **Serialization & Integration Component:** System.Text.Json / Newtonsoft.Json library utilized to serialize outward-facing analytical models and safely parse complex multi-nested JSON payloads received from Module 6 (LAB-TRK) into verified operational server schemas.
 *   
-*   **2.1.5 Communications Interfaces:** [Define networking protocols used, e.g., HTTP/REST, WebSockets].
+*   **2.1.5 Communications Interfaces:** [​To ensure reliable and distributed data transit across the MediChain ecosystem, the module uses the following communication standards:
+
+​Protocol & Format: All interactions between the Frontend client and the Backend core occur over secure HTTPS via synchronous RESTful APIs, utilizing JSON (JavaScript Object Notation) for payload delivery.
+
+​Database Connection: Employs persistent connection pooling via TCP/IP to communicate with the centralized database system , utilizing TLS 1.3 encryption for database streams.
+
+​Asynchronous Integration: Uses a message queue broker (e.g., RabbitMQ or Kafka) to communicate asynchronously with external systems, such as triggering the reporting service to compile the read-only PDF document once a result is locked.].
 *   
 *   **2.1.6 Memory & Operational Constraints:** [State minimum RAM, storage, and normal operating assumptions].
 

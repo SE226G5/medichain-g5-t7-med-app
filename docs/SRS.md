@@ -100,13 +100,14 @@ https://github.com/SE226G5/medichain-g5_t4_ref_trk
 *   
 *   **2.1.3 Hardware Interfaces:** [None.the system operates through standard computer and tablet screens.].
 *   
-* 	**2.1.4 Software Interfaces:**
-    The Sample Tracking Subsystem (LAB-TRK) data access and mapping layers interface with the following standard software components and libraries to guarantee transactional integrity:
-    * **Local Database Engine:** SQLite Engine (via Android Room Persistence Library) utilized for caching state transitions, executing sub-second workflow validations, and managing offline tracking logs on the mobile client.
-    * **Enterprise Database Engine:** Microsoft SQL Server / PostgreSQL utilized for backend data synchronization, long-term historical auditing, and global cross-module analytical queries.
-    * **Object-Relational Mapper (ORM):** * *Backend Layer:* Entity Framework Core (EF Core 8.0) to bind logical relational rows to the defined C# Domain Classes (`Sample`, `TrackingLog`, `TestResult`) without manual SQL string parsing.
-        * *Mobile Layer:* Jetpack Room Compiler & Runtime libraries to auto-generate the underlying SQLite abstract compilation schemas from Kotlin data access objects (DAOs).
-    * **Serialization Component:** Newtonsoft.Json / System.Text.Json library used to safely encode and decode the complex integration JSON payloads received from external referral endpoints into atomic table records.
+### 2.1.4 Software Interfaces
+The Medical Approval & Locking Subsystem (MED-APP) interfaces with standard server-side enterprise technologies and secure cryptographic libraries to guarantee absolute row-level locking, unalterable audit trails, and secure data publishing:
+
+* **Enterprise Database Engine (Data Locking Layer):** Microsoft SQL Server / PostgreSQL. The module utilizes strict database-level transactional locks and triggers to instantly switch a sample's status to `LOCKED` upon medical sign-off, rendering the original rows read-only for standard application queries.
+* **Object-Relational Mapper (ORM):** Entity Framework Core (EF Core 8.0). Used to securely map physical database records to core C# Domain Models without exposure to custom raw SQL, thereby preventing SQL Injection vulnerabilities during approval and override workflows.
+* **Document Generation & Cryptographic Interface:** * *PDF Compilation Engine:* iTextSharp / QuestPDF library integrated to dynamically compile approved laboratory results into structured, tamper-evident, read-only PDF medical reports.
+    * *Cryptographic Signing Component:* System.Security.Cryptography framework utilized to apply digital signatures (SHA-256 hashing) to individual generated PDF reports, ensuring file authenticity for consuming external systems.
+* **Serialization & Integration Component:** System.Text.Json / Newtonsoft.Json library utilized to serialize outward-facing analytical models and safely parse complex multi-nested JSON payloads received from Module 6 (LAB-TRK) into verified operational server schemas.
 *   
 *   **2.1.5 Communications Interfaces:** [Define networking protocols used, e.g., HTTP/REST, WebSockets].
 *   

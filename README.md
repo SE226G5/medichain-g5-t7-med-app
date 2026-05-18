@@ -19,7 +19,7 @@ Provide a brief description of what this module does based on the project text. 
 | **Yousef Abbas** | Process Modeling | Activity Diagrams, Business Rules Validation | [https://github.com/YousefAbaas] |
 | **Hussein Resha** | Data Design | ERD, Database Schema, Class Diagrams | [https://github.com/Hussein-Resha] |
 | **Student 5 (Optional)** | Interaction Design | Sequence Diagrams, Logic Flow | [Link] |
-| **Student 6 (Optional)** | UI/UX & Frontend | Wireframes, Interface Logic, User Stories | [Link] |
+| **Yaarub Yousef** | UI/UX & Frontend | Wireframes, Interface Logic, User Stories | [https://github.com/Yaarub123] |
 
 ---
 

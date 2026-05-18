@@ -219,20 +219,122 @@ Authorization	                    Patients may only access their own appointment
 Input validation	     All incoming request parameters (patient ID, doctor ID, appointment datetime) must                           be validated against expected types and ranges before any business rule is                                   evaluated.
 
 
-
-
-
 3.5.4  Usability
 Attribute	                                                          Requirement
-Error messaging  	Every business rule failure must produce a user-readable error message that names the specific violated constraint (e.g., "This slot is already booked" for BR-01, not a generic "Error occurred").
-Feedback latency	Users must receive visual feedback (loading indicator or response) within 500ms of any interaction, even if the full operation takes longer.
-Cancellation clarity	The UI must display the 2-hour cancellation deadline (BR-08) prominently on each appointment card so patients are aware before attempting late cancellation.
+Error messaging     	                             Every business rule failure must produce a user-                                                             readable error message that names the specific violated                                                      constraint (e.g., "This slot is already booked" for BR-                                                      01, not a generic "Error occurred").
+
+Feedback latency	                                 Users must receive visual feedback (loading indicator                                                        or response) within 500ms of any interaction, even if                                                        the full operation takes longer.
+
+Cancellation clarity	                             The UI must display the 2-hour cancellation deadline                                                         (BR-08) prominently on each appointment card so                                                               patients are aware before attempting late cancellation.
 
 ---
 
 ## 4. Appendices
 ### Appendix A: Glossary & Models
-* **Instruction:** Include any Data Flow Diagrams (DFDs), Entity-Relationship Diagrams (ERDs), or detailed UI Mockups here.
+* 1. Inbound APIs (From Module 6)
+Source Subsystem
+
+Sample Tracking System (LAB-TRK – Module 6)
+
+Description
+
+Retrieve samples ready for medical approval (technically locked).
+
+Endpoint
+
+GET /api/v1/samples/ready-for-approval
+
+Response (JSON)
+{
+  "sample_id": "ST-1002-2026",
+  "status": "Ready_for_Approval",
+  "lab_technician": "Technician_Name",
+  "results": [
+    {
+      "test_name": "Glucose",
+      "raw_result": "95",
+      "reference_range": "70-100",
+      "unit": "mg/dL"
+    }
+  ],
+  "timestamp": "2026-05-12T14:30:00Z"
+}
+
+
+2. Outbound & Internal APIs (MED-APP Interfaces)
+A. Medical Approval & Result Locking Interface (Internal – UI)
+Endpoint
+
+POST /api/v1/med-app/results/{sample_id}/approve
+
+Body
+{
+  "doctor_id": "DOC-789",
+  "approval_timestamp": "2026-05-15T10:30:00Z"
+}
+Response (200 OK)
+{
+  "status": 200,
+  "message": "Result successfully approved and locked.",
+  "record_status": "LOCKED"
+}
+
+B. Override Modification Request Interface (Internal – UI)
+Endpoint
+
+POST /api/v1/med-app/results/{sample_id}/override
+
+Body
+{
+  "doctor_id": "DOC-789",
+  "reason_for_change": "Correction of typographical error",
+  "new_value": "15.5",
+  "request_time": "2026-05-15T11:00:00Z"
+}
+
+Response (201 Created)
+{
+  "status": 201,
+  "message": "Modification request logged."
+}
+C. Report Retrieval Interface for Other Teams (Outbound – Teams 4 & 5)
+Endpoint
+
+GET /api/v1/med-app/results/{sample_id}/report
+
+Response (200 OK)
+{
+  "status": 200,
+  "patient_name": "Ahmed Mohammed",
+  "status_text": "APPROVED_AND_LOCKED",
+  "report_url": "https://medichain.com/reports/pdf/1002.pdf",
+  "is_locked": true
+}
+
+3. Architectural & Design Diagrams
+Component Diagram & API Specs (Integration Architecture)
+
+[component diagram image here – Student 1 Task (Team Leader)]
+
+Use Case Diagram (Requirements & Analysis)
+
+[use case diagram here – Student 2 Task]
+
+Activity Diagram (Process Modeling)
+
+[activity diagram here – Student 3 Task]
+
+Data Design & ERD Schema (Database Design)
+
+[database schema diagram here – Student 4 Task]
+
+Sequence Diagram (Interaction Design)
+
+[sequence diagram here – Student 5 Task]
+
+UI/UX Wireframes (Frontend)
+
+[UI screen designs and wireframes here – Student 6 Task]
 
 ### Appendix B: GitHub Traceability Checklist
 * **Instruction for Team Members:** Before submitting this SRS, ensure that:

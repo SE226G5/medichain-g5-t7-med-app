@@ -175,7 +175,16 @@ Acceptance Criteria:
 All data input elements must switch to a permanent Read-Only state immediately after approval is submitted.  
 The system must generate a finalized, unalterable PDF/view-only final report.  
 GitHub Issue: https:[//github.com/meladrajoh/MediChain/issues/73]
-
+###3.2.3 Feature: Secure Modification Workflow & Audit Trail
+Description: Governs exceptional unlock requests for sealed medical results and logs all changes for compliance and accountability.  
+Priority: High
+User Stories:
+Story 1: As a Laboratory Director, I want any request to unlock or modify a locked result to pass through a strict approval path while logging the reason, user, and timestamp so that we maintain a full audit trail for medical compliance.
+Acceptance Criteria:
+The system must block any edits until a valid text justification for the modification is provided.  
+The system must automatically capture and log: (authorized user identity, precise timestamp, old value, newly modified value, and modification reason).  
+GitHub Issue: https:[//github.com/meladrajoh/MediChain/issues/74
+]
 ### 3.3 Performance Requirements
 
        Operation	                                     Max Response Time	                                       Source / Rationale

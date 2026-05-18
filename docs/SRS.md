@@ -96,7 +96,24 @@ Team 4 Repository Link
 https://github.com/SE226G5/medichain-g5_t4_ref_trk
 *    ].
 *    
-*   **2.1.2 User Interfaces:** [Describe the logical characteristics of your UI. Are you following a shared design system?].
+*   **2.1.2 User Interfaces:** [The user interface of the MED-APP module operates on a State-Driven UI mechanism. The behavioral logic, interactivity, and visibility of screen elements dynamically change based on the medical test result status as follows:
+
+1. Pre-Approval State (Status: Pending Approval)
+Input Fields Behavior: All laboratory data fields containing test parameters and results remain active and open for review. The physician can freely scroll, inspect, or adjust inputs before final verification.
+
+Action Elements: A prominent, high-visibility "Medical Approval" button (e.g., highlighted in Green or Blue) is enabled at the bottom or end of the result row.
+
+2. Approved & Locked State (Status: Approved)
+Input Fields Behavior: Immediately upon clicking the "Medical Approval" button, the system triggers an UI state transition. All data entry fields and text boxes dynamically shift to disabled=true. They turn light gray and become strictly Read-Only to mitigate any risk of accidental edits or unauthorized tapering.
+
+Action Elements: The "Medical Approval" button is hidden from the layout. It is replaced by a "Request Modification" button (styled in an amber or red warning color).
+
+3. Modification Dialog Logic (State: Modification Request Modal)
+Trigger Mechanism: Clicking the "Request Modification" button overlays a secure, focused Pop-up Modal window on top of the locked screen.
+
+Form Validation: The "Submit Request" button inside this modal is programmatically disabled by default. The UI logical rule enforces that the button remains unclickable until the user types a detailed justification into the "Reason for Modification" text area (minimum length constraint: 15 characters).
+
+Automatic Auditing: Once the validation passes and the request is sent, the interface automatically appends the active session's User ID and the current precise System Timestamp to the payload before submission.].
 *   
 *   **2.1.3 Hardware Interfaces:** [​The Medical Approval & Locking module interfaces with the following laboratory and hospital hardware components:
 

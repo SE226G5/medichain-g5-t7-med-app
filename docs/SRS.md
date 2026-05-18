@@ -341,7 +341,7 @@ Activity Diagram (Process Modeling)
 [activity diagram image here – Student 3 Task]
 [activity diagram link here – Student 3 Task]
 
-Data Design & ERD Schema (Database Design)
+Data Design & ERD Schema (Database Design) 
 
 [<img width="764" height="450" alt="ERD" src="https://github.com/user-attachments/assets/7b5100a4-4adc-4136-a931-c415b17eceb3" />]
 [https://drive.google.com/file/d/19TUzbkHyBE4hMii8rerfndmvbH20hMoG/view?usp=sharing]

@@ -370,7 +370,7 @@ Data Design & ERD Schema (Database Design)
 Sequence Diagram (Interaction Design)
 
 [sequence diagram image here – Student 5 Task]
-[sequence diagram link here – Student 5 Task]
+[https://drive.google.com/file/d/1TceLXdOpNG5RXakv4Ry1kwcoUre0QJXS/view?usp=drivesdk]
 
 UI/UX Wireframes (Frontend)
 

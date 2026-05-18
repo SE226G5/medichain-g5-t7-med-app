@@ -96,11 +96,11 @@ Team 4 Repository Link
 https://github.com/SE226G5/medichain-g5_t4_ref_trk
 *    ].
 *    
-*   **2.1.2 User Interfaces:** [The graphical user interface for this module follows a unified, shared design system tailored specifically for laboratory doctors to ensure maximum speed, efficiency, and precision when handling sensitive medical data:"
+*   **2.1.2 User Interfaces:** The graphical user interface for this module follows a unified, shared design system tailored specifically for laboratory doctors to ensure maximum speed, efficiency, and precision when handling sensitive medical data:"
 Approval Dashboard: Displays a comprehensive list of completed medical test results awaiting official verification, sorted automatically by priority level and sample collection time.
 Result Review Screen: Features a comparative data table displaying the patient’s current test values alongside standard reference ranges, with out-of-range critical values dynamically highlighted in an alert color (e.g., bright red).
 Locking Confirmation Dialog: A secure pop-up modal that triggers when the doctor clicks "Approve & Lock", presenting a summary of the data and requiring a final confirmation or digital signature.
-Result Modification Workflow Screen: A restricted interface that appears only when an authorized user attempts to unlock a sealed record, forcing them to fill out a mandatory justification input field.].
+Result Modification Workflow Screen: A restricted interface that appears only when an authorized user attempts to unlock a sealed record, forcing them to fill out a mandatory justification input field.
 *   
 *   **2.1.3 Hardware Interfaces:** [​The Medical Approval & Locking module interfaces with the following laboratory and hospital hardware components:
 
@@ -154,19 +154,27 @@ Modification Request Logic: When requesting an edit on a locked file, the "Save 
 ### 3.2 System Features & User Stories
 * **Instruction:** Organize your requirements by Feature. For each feature, write the underlying requirements as User Stories and link them to your GitHub Issues.
 
-#### 3.2.1 Feature: [Insert Feature Name, e.g., Patient Registration]
-*   **Description:** [Briefly describe the feature].
-*   **Priority:** [High / Medium / Low].
+#### 3.2.1 Feature: Medical Result Approval.
+*   **Description:**Enables laboratory doctors to review, validate, and officially approve medical test results, ensuring no unverified reports are issued.  
+*   **Priority:** High
 *   **User Stories:**
-    *   **Story 1:** As a [User Role], I want to [Action/Goal] so that [Benefit/Value]. 
-        * *Acceptance Criteria:* [List what must be true for this to be considered 'Done'].
-        * *GitHub Issue:* [Link to Issue, e.g., #12]
-    *   **Story 2:** As a [User Role], I want to [Action/Goal] so that [Benefit/Value].
-        * *Acceptance Criteria:* [List criteria].
-        * *GitHub Issue:* [Link to Issue, e.g., #13]
+    *   **Story 1:** As a Laboratory Doctor, I want to review pending lab results and click 'Approve' so that the results are officially validated for production.
+     * *Acceptance Criteria:* The system must prevent any report from being issued or viewed by patients or external doctors before formal approval.  
+A clear visual indicator (e.g., a "Pending Approval" badge) must be displayed next to unapproved records.
+    * *GitHub Issue:* [https://github.com/meladrajoh/MediChain/issues/71]
+    *   **Story 2:** As a Laboratory Doctor, I want to see visual alerts for out-of-range (critical) medical data so that I can focus my clinical review on high-risk cases.
+    * *Acceptance Criteria:*Patient test results must be automatically cross-referenced against saved normal ranges based on age.
+  * *GitHub Issue:* [https://github.com/meladrajoh/MediChain/issues/72]
 
-#### 3.2.2 Feature: [Insert Feature Name]
-*   [Repeat the structure above for all module features].
+#### 3.2.2 Feature: Result Locking & Tamper Prevention   
+Description: Locks medical records immediately upon approval to safeguard data integrity and prevent unauthorized data alterations.  
+Priority: High
+User Stories:
+Story 1: As a System Administrator, I want the system to instantly lock results upon medical approval so that no laboratory user can directly overwrite or modify them.
+Acceptance Criteria:
+All data input elements must switch to a permanent Read-Only state immediately after approval is submitted.  
+The system must generate a finalized, unalterable PDF/view-only final report.  
+GitHub Issue: https:[//github.com/meladrajoh/MediChain/issues/73]
 
 ### 3.3 Performance Requirements
 

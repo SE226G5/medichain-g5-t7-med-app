@@ -71,9 +71,14 @@ Section 4 contains appendices including architectural diagrams and API specifica
 
 ## 2. Overall Description
 ### 2.1 Product Perspective
-* **Instruction:** Explain how your software fits into the bigger picture. 
-  * **For Subsystem Teams:** State clearly that your module is a component of a larger system. How does it interact with the master database or other modules?
-  * **For the Integration Team:** Provide the high-level block diagram showing all subsystems and their connection points.
+* For Subsystem Teams
+
+The MED-APP system is an integrated subsystem that interacts directly with the shared centralized database.
+
+For the Integration Team
+
+This module represents the “Final Security and Confirmation Gateway.”
+It receives raw data from Module 6, locks it after approval, and allows Modules 4 and 5 to consume and display or bill the approved data.
 
 *   **2.1.1 System Interfaces:** [List the exact integration points and APIs your module exposes to, or consumes from, other teams].
 *   **2.1.2 User Interfaces:** [Describe the logical characteristics of your UI. Are you following a shared design system?].

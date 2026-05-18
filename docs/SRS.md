@@ -181,7 +181,9 @@ Database availability check queries / second	         Up to 500 queries/second o
 Architectural Database Summary
 The tracking database enforces dynamic data integrity across three distinct, normalized operational layers:
 1. **Core Sample Registry (`Samples`):** Acts as the master directory entry for any medical specimen entering the tracking module. It maps the absolute unique payload key (`sample_id`) to the current global state of the workflow and locks the current technician identity.
+
 2. **State Machine Logging (`Tracking_Logs`):** A strictly linear transaction table capturing every internal handoff (Receipt $\rightarrow$ Analysis $\rightarrow$ Clinical Review). It implements database-level timestamping (`start_time`, `end_time`) to compute precise turnaround times (TAT) and triggers an automated warning flag if predefined phase thresholds are violated.
+
 3. **Clinical Payload Datastore (`Test_Results`):** Deconstructs incoming structured payloads (such as the integration JSON schema) into atomic test entities. This normalizes relational storage for items like test types, quantitative numerical data, and safety boundaries before medical validation.
 
 ### 3.5 Software System Attributes
@@ -191,11 +193,16 @@ This section documents the Non-Functional Requirements (NFRs) of the Appointment
 Reliability defines the system's ability to perform its required functions under stated conditions for a specified period.
 
     Attribute	                                               Requirement
-Double-booking prevention	100% guaranteed — the atomic slot lock (BR-06) and atomic DB write (BR-07) must together eliminate all double-bookings, even under concurrent load. This is a zero-tolerance requirement.
-System uptime            	The Appointments module must achieve 99.5% uptime during hospital operating hours (6:00 AM – 10:00 PM). Planned maintenance must occur during off-hours.
-Data consistency           	All appointment status transitions must be atomic. Partial state changes (e.g., slot locked but booking not saved) must trigger automatic rollback within 30 seconds.
-Fault tolerance	                If the External Notification System (BR-10) is unavailable, the booking or cancellation must still complete successfully. Notification delivery is best-effort and must not block core transactions.
-Slot lock auto-release   	If a booking confirmation is not completed within the 5-minute lock window (BR-06), the slot must be automatically released with 100% certainty — no orphaned locks permitted.
+Double-booking prevention	100% guaranteed — the atomic slot lock (BR-06) and atomic DB write (BR-07) must                              together eliminate all double-bookings, even under concurrent load. This is a                                zero-tolerance requirement.
+
+System uptime            	The Appointments module must achieve 99.5% uptime during hospital operating                                  hours (6:00 AM – 10:00 PM). Planned maintenance must occur during off-hours.
+
+Data consistency           	All appointment status transitions must be atomic. Partial state changes (e.g.,                              slot locked but booking not saved) must trigger automatic rollback within 30                                 seconds.
+
+Fault tolerance	                If the External Notification System (BR-10) is unavailable, the booking or                                   cancellation must still complete successfully. Notification delivery is                                      best- effort and must not block core transactions.
+
+Slot lock auto-release   	If a booking confirmation is not completed within the 5-minute lock window 
+                            (BR-06), the slot must be automatically released with 100% certainty — no                                    orphaned locks permitted.
 
 
 3.5.2  Maintainability
@@ -205,9 +212,11 @@ Business rule isolation	Each business rule (BR-01 through BR-10) must be impleme
 
 3.5.3  Security و هذه تعتبر من اهم افكار المشروع بشكل خاص
 Attribute	                                         Requirement
-Authentication           	All API endpoints for booking, modifying, or cancelling appointments must require a valid authenticated session token. Unauthenticated requests must be rejected with HTTP 401.
-Authorization	       Patients may only access their own appointment records. Reception staff may access all patient appointments. The "Manager" privilege override in BR-08 must be enforced server-side, not client-side.
-Input validation	     All incoming request parameters (patient ID, doctor ID, appointment datetime) must be validated against expected types and ranges before any business rule is evaluated.
+Authentication                	    All API endpoints for booking, modifying, or cancelling appointments                                         must require a valid authenticated session token. Unauthenticated                                            requests must be rejected with HTTP 401.
+
+Authorization	       Patients may only access their own appointment records. Reception staff may access                           all patient appointments. The "Manager" privilege override in BR-08 must be enforced                         server-side, not client-side.
+
+Input validation	     All incoming request parameters (patient ID, doctor ID, appointment datetime) must                           be validated against expected types and ranges before any business rule is                                   evaluated.
 
 
 

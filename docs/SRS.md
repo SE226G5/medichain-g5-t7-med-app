@@ -100,7 +100,7 @@ https://github.com/SE226G5/medichain-g5_t4_ref_trk
 *   
 *   **2.1.3 Hardware Interfaces:** [​The Medical Approval & Locking module interfaces with the following laboratory and hospital hardware components:
 
-​  Barcode Scanners: Integrated with the laboratory equipment interface to automatically scan tube barcodes, ensuring the matching of physical blood/tissue samples with the digital patient record before displaying results for approval.
+​Barcode Scanners: Integrated with the laboratory equipment interface to automatically scan tube barcodes, ensuring the matching of physical blood/tissue samples with the digital patient record before displaying results for approval.
 
 ​Authentication Tokens/Keycards: Supports physical RFID/smart card readers attached to terminal computers for secure biometric or card-based fast login, mandatory for Laboratory Doctors prior to authorizing a clinical result approval.].
 *   

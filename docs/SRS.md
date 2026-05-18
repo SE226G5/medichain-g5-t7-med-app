@@ -314,8 +314,9 @@ Response (200 OK)
 3. Architectural & Design Diagrams
 Component Diagram & API Specs (Integration Architecture)
 
-[component diagram image here – Student 1 Task (Team Leader)]
-[component diagram link here – Student 1 Task (Team Leader)]
+[<img width="2281" height="1296" alt="Module7 drawio" src="https://github.com/user-attachments/assets/8c62c82b-99bb-4d30-8582-ea0a40f176ca" />]
+
+[https://app.diagrams.net/#G1FCoI0mmtDmUcbFQzGzVSbyXYra6UOVFs#%7B%22pageId%22%3A%22tCMl2Ofq-hfzwy98Vaxk%22%7D]
 
 
 Use Case Diagram (Requirements & Analysis)

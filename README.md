@@ -18,7 +18,7 @@ Provide a brief description of what this module does based on the project text. 
 | **Assead Ibrahim** | Requirements & Analysis | Functional Requirements, Use Case Diagrams | [https://github.com/AsseadIbrahim] |
 | **Yousef Abbas** | Process Modeling | Activity Diagrams, Business Rules Validation | [https://github.com/YousefAbaas] |
 | **Hussein Resha** | Data Design | ERD, Database Schema, Class Diagrams | [https://github.com/Hussein-Resha] |
-| **Ali Hammoud** | Interaction Design | Sequence Diagrams, Logic Flow | [[Link](https://github.com/ali0hammoud)] |
+| **Ali Hammoud** | Interaction Design | Sequence Diagrams, Logic Flow | [https://github.com/ali0hammoud] |
 | **Yaarub Yousef** | UI/UX & Frontend | Wireframes, Interface Logic, User Stories | [https://github.com/Yaarub123] |
 
 ---

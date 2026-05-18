@@ -100,7 +100,7 @@ https://github.com/SE226G5/medichain-g5_t4_ref_trk
 *   
 *   **2.1.3 Hardware Interfaces:** [None.the system operates through standard computer and tablet screens.].
 *   
-### 2.1.4 Software Interfaces
+*   **2.1.4 Software Interfaces
 The Medical Approval & Locking Subsystem (MED-APP) interfaces with standard server-side enterprise technologies and secure cryptographic libraries to guarantee absolute row-level locking, unalterable audit trails, and secure data publishing:
 
 * **Enterprise Database Engine (Data Locking Layer):** Microsoft SQL Server / PostgreSQL. The module utilizes strict database-level transactional locks and triggers to instantly switch a sample's status to `LOCKED` upon medical sign-off, rendering the original rows read-only for standard application queries.

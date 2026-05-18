@@ -80,11 +80,30 @@ For the Integration Team
 This module represents the “Final Security and Confirmation Gateway.”
 It receives raw data from Module 6, locks it after approval, and allows Modules 4 and 5 to consume and display or bill the approved data.
 
-*   **2.1.1 System Interfaces:** [List the exact integration points and APIs your module exposes to, or consumes from, other teams].
+*   **2.1.1 System Interfaces:**
+*    [
+*    Inbound APIs
+
+Our system consumes the GET Endpoint provided by Team 6 (LAB-TRK) to retrieve all samples with the status "Ready for Approval".
+(API details are provided in Appendix A.)
+
+Outbound APIs
+
+Our system provides a dedicated GET Endpoint for the External Referrals Gateway (REF-TRK) to retrieve the final report URL (PDF) and result details, provided that the result has already been approved and locked.
+
+Team 4 Repository Link
+
+https://github.com/SE226G5/medichain-g5_t4_ref_trk
+*    ].
+*    
 *   **2.1.2 User Interfaces:** [Describe the logical characteristics of your UI. Are you following a shared design system?].
-*   **2.1.3 Hardware Interfaces:** [List any required hardware, e.g., barcode scanners for labs, or state "None"].
+*   
+*   **2.1.3 Hardware Interfaces:** [None.the system operates through standard computer and tablet screens.].
+*   
 *   **2.1.4 Software Interfaces:** [Specify OS requirements, database dependencies, or third-party libraries].
+*   
 *   **2.1.5 Communications Interfaces:** [Define networking protocols used, e.g., HTTP/REST, WebSockets].
+*   
 *   **2.1.6 Memory & Operational Constraints:** [State minimum RAM, storage, and normal operating assumptions].
 
 ### 2.2 Product Functions
@@ -102,8 +121,7 @@ It receives raw data from Module 6, locks it after approval, and allows Modules 
 * **Instruction:** This section translates traditional functional requirements into Agile User Stories. Every feature must be traceable to the project management board.
 
 ### 3.1 External Interface Requirements
-* **Instruction:** Detail the exact data formats, API endpoints, and UI layouts needed for the interfaces mentioned in section 2.1.
-
+* Detailed architecture, endpoint links, and JSON request/response formats are fully documented in Appendix A
 ### 3.2 System Features & User Stories
 * **Instruction:** Organize your requirements by Feature. For each feature, write the underlying requirements as User Stories and link them to your GitHub Issues.
 
@@ -124,28 +142,38 @@ It receives raw data from Module 6, locks it after approval, and allows Modules 
 ### 3.3 Performance Requirements
 
        Operation	                                     Max Response Time	                                       Source / Rationale
-Slot availability check (BR-01, BR-02 combined)	      < 1.5 seconds                       	Ensures smooth UX during slot selection; delay causes user abandonment.
-Full business rules validation (BR-01 through BR-05)	 < 2.0 seconds                  	Total pre-booking validation pipeline; must feel instantaneous to user.
-Slot lock acquisition (BR-06)	                          < 200 milliseconds          	Any delay creates a Race Condition window for concurrent users.
-Booking confirmation (DB write, BR-07)	               < 500 milliseconds	              Atomic write must complete quickly to release lock and confirm to user.
-Slot status release on cancellation (BR-09)	           < 1.0 second                         	Freed slots must be available to other patients within seconds.
-Notification dispatch — async (BR-10)	                < 30 seconds             (best-effort)	Fire-and-forget; must not block the booking or cancellation response.
+Slot availability check (BR-01, BR-02 combined)	         < 1.5 seconds         	Ensures smooth UX during slot selection; delay causes user abandonment.
+
+Full business rules validation (BR-01 through BR-05)	 < 2.0 seconds         	Total pre-booking validation pipeline; must feel instantaneous to user.
+
+Slot lock acquisition (BR-06)	                        < 200 milliseconds      Any delay creates a Race Condition window for concurrent users.
+
+Booking confirmation (DB write, BR-07)	                < 500 milliseconds	    Atomic write must complete quickly to release lock and confirm to user.
+
+Slot status release on cancellation (BR-09)	            < 1.0 second           	Freed slots must be available to other patients within seconds.
+
+
+Notification dispatch — async (BR-10)	                < 30 seconds            (best-effort) Fire-and-forget; must not block the booking or cancellation response.
+
+
 Full booking flow — end to end (happy path)          	< 4.0 seconds                      	Total perceived time from "Confirm" tap to confirmation screen.
 
-                                    Throughput & Concurrency Requirements
-    Requirement	                                     Metric / Threshold
-	
-Minimum concurrent users supported	                 50 simultaneous active users
-Peak booking requests per minute                  	200 booking attempts / minute without degradation
-Double-booking prevention guarantee	                100% — zero tolerance (BR-01 + BR-06 + BR-07)
-Slot lock collision rate under peak load                 	0% successful double-bookings even under concurrent requests
-Database availability check queries / second	            Up to 500 queries/second on Doctor_Schedules table
+                                                       Throughput & Concurrency Requirements
+    Requirement	                                              Metric / Threshold
+	  
+Minimum concurrent users supported	                     50 simultaneous active users
+Peak booking requests per minute                         200 booking attempts / minute without degradation
+Double-booking prevention guarantee	                     100% — zero tolerance (BR-01 + BR-06 + BR-07)
+Slot lock collision rate under peak load                 0% successful double-bookings even under concurrent requests
+Database availability check queries / second	         Up to 500 queries/second on Doctor_Schedules table
 
                                       Scalability Requirements
 
-•	The availability validation algorithm must scale linearly with the number of doctors — adding a new doctor to the system must not degrade response times for existing doctors.
-•	The slot-locking mechanism (BR-06) must be implemented using a distributed lock (e.g., database-level row lock or Redis lock) to support horizontal scaling of the application server.
-•	All performance thresholds above must be maintained when the system is operating at 80% of its maximum concurrent user capacity.
+•	The availability validation algorithm must scale linearly with the number of doctors — adding a new           doctor to the system must not degrade response times for existing doctors.
+
+•	The slot-locking mechanism (BR-06) must be implemented using a distributed lock (e.g., database-level         row lock or Redis lock) to support horizontal scaling of the application server.
+
+•	All performance thresholds above must be maintained when the system is operating at 80% of its maximum        concurrent user capacity.
 
 
 ### 3.4 Logical Database Requirements

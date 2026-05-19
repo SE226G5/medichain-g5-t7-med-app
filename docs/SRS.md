@@ -377,7 +377,7 @@ Component Diagram & API Specs (Integration Architecture)
 Use Case Diagram (Requirements & Analysis)
 
 [<img alt="استخدام Case.png" data-hpc="true" style="max-width: 100%;" src="https://github.com/SE226G5/medichain-g5-t7-med-app/blob/main/docs/images/Use%20Case.png?raw=true">]
-[use case diagram link here – Student 2 Task]
+[https://github.com/SE226G5/medichain-g5-t7-med-app/blob/main/docs/MyProject.vpp]
 
 
 Activity Diagram (Process Modeling)

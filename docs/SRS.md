@@ -175,14 +175,14 @@ The Medical Approval & Locking Subsystem (MED-APP) interfaces with standard serv
 	 - Final approved reports must be generated as read-only documents.
 	 - The subsystem must comply with secure medical data handling and privacy requirements.
 	 - The subsystem must integrate with the shared MediChain database and APIs.
-	 - Unauthorized users must not access patient reports or approval functions.]
+	 - Unauthorized users must not access patient reports or approval functions.].
 	 Assumptions :
 	[ - Users are authenticated before accessing the subsystem.
 	 - Laboratory test results are received from the LAB-TRK subsystem.
 	 - Payment and billing verification are handled by the REV-BIL subsystem.
 	 - The shared database server and network infrastructure are continuously available.
 	 - Users have stable internet connectivity while using the system.
-	 - Other MediChain subsystems provide valid and correctly formatted data.]
+	 - Other MediChain subsystems provide valid and correctly formatted data.].
 	 Dependencies : 
 	[ - The subsystem depends on the LAB-TRK subsystem for receiving completed laboratory test results.
 	 - The subsystem depends on the REV-BIL subsystem to verify payment status before releasing reports.

@@ -169,26 +169,26 @@ The Medical Approval & Locking Subsystem (MED-APP) interfaces with standard serv
 ### 2.4 Constraints, Assumptions, and Dependencies
 * **Instruction:** [
 	Constraints : 
-	 - Approved laboratory results must not be modified directly after being locked.
+	[ - Approved laboratory results must not be modified directly after being locked.
 	 - All approval and modification actions must be logged with user identity and timestamp.
 	 - Only authorized laboratory doctors are allowed to approve laboratory results.
 	 - Final approved reports must be generated as read-only documents.
 	 - The subsystem must comply with secure medical data handling and privacy requirements.
 	 - The subsystem must integrate with the shared MediChain database and APIs.
-	 - Unauthorized users must not access patient reports or approval functions.
-	 Assumptions : 
-	 - Users are authenticated before accessing the subsystem.
+	 - Unauthorized users must not access patient reports or approval functions.]
+	 Assumptions :
+	[ - Users are authenticated before accessing the subsystem.
 	 - Laboratory test results are received from the LAB-TRK subsystem.
 	 - Payment and billing verification are handled by the REV-BIL subsystem.
 	 - The shared database server and network infrastructure are continuously available.
 	 - Users have stable internet connectivity while using the system.
-	 - Other MediChain subsystems provide valid and correctly formatted data.
+	 - Other MediChain subsystems provide valid and correctly formatted data.]
 	 Dependencies : 
-	 - The subsystem depends on the LAB-TRK subsystem for receiving completed laboratory test results.
+	[ - The subsystem depends on the LAB-TRK subsystem for receiving completed laboratory test results.
 	 - The subsystem depends on the REV-BIL subsystem to verify payment status before releasing reports.
  	 - The subsystem depends on the REF-TRK subsystem for publishing approved reports to external doctors.
 	 - The subsystem depends on the authentication and authorization service for user identity verification and role management.
-	 - The subsystem depends on the central MediChain database for storing approvals, audit logs, and final reports.
+	 - The subsystem depends on the central MediChain database for storing approvals, audit logs, and final reports.]
 ]
 ---
 

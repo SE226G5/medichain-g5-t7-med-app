@@ -134,14 +134,62 @@ The Medical Approval & Locking Subsystem (MED-APP) interfaces with standard serv
 ​Execution Timeout: Any approval validation process or locking API pipeline must terminate and rollback transaction states if it exceeds an operational execution boundary of 5 seconds.].
 
 ### 2.2 Product Functions
-* **Instruction:** Provide a high-level, bulleted summary of the major functions your software performs. Do not go into deep detail here (save it for Section 3).
+* **Instruction:** [The MED-APP subsystem provides the following major functions:
+  - Review and approve laboratory test results before they are released.
+  - Prevent unapproved laboratory results from being published or accessed.
+  - Lock approved laboratory results to prevent unauthorized modifications.
+  - Manage modification requests for locked results through a controlled approval workflow.
+  - Record all approval and modification actions in secure audit logs.
+  - Generate final read-only medical reports after approval.
+  - Allow authorized users to view approved laboratory reports.
+  - Track approval details including responsible user, timestamp, and modification history.
+  - Ensure that only authorized laboratory doctors can approve or modify results.
+  - Support secure integration with other MediChain subsystems.].
 
 ### 2.3 User Characteristics
-* **Instruction:** Who will use your specific module? (e.g., Lab Technicians, Doctors, System Admins). Describe their technical expertise level.
+* **Instruction:** [The MED-APP subsystem will be used by multiple categories of users with different responsibilities and technical expertise levels.
+	1. Laboratory Doctors
+	  - Responsible for reviewing, approving, and validating laboratory test results.
+	  - Can request modifications for locked results when necessary.
+	  - Expected to have moderate computer literacy and strong medical domain knowledge.
+	2. Laboratory Administrators
+	  - Responsible for monitoring approval workflows and supervising modification requests.
+	  - Can review audit logs and system activities.
+	  - Expected to have advanced technical knowledge of the system.
+	3. External Doctors
+	  - Responsible for viewing final approved laboratory reports related to their patients.
+	  - Have read-only access to approved reports.
+	  - Expected to have basic computer usage skills.
+	4. System Administrators
+	  - Responsible for managing users, permissions, system configuration, and maintenance.
+	  - Monitor security, access control, and system reliability.
+	  - Expected to have advanced technical and administrative expertise.
+].
 
 ### 2.4 Constraints, Assumptions, and Dependencies
-* **Instruction:** List any factors that limit your development (e.g., medical data privacy laws, reliance on another team finishing their API first, specific coding languages mandated).
-
+* **Instruction:** [
+	Constraints : 
+	 - Approved laboratory results must not be modified directly after being locked.
+	 - All approval and modification actions must be logged with user identity and timestamp.
+	 - Only authorized laboratory doctors are allowed to approve laboratory results.
+	 - Final approved reports must be generated as read-only documents.
+	 - The subsystem must comply with secure medical data handling and privacy requirements.
+	 - The subsystem must integrate with the shared MediChain database and APIs.
+	 - Unauthorized users must not access patient reports or approval functions.
+	 Assumptions : 
+	 - Users are authenticated before accessing the subsystem.
+	 - Laboratory test results are received from the LAB-TRK subsystem.
+	 - Payment and billing verification are handled by the REV-BIL subsystem.
+	 - The shared database server and network infrastructure are continuously available.
+	 - Users have stable internet connectivity while using the system.
+	 - Other MediChain subsystems provide valid and correctly formatted data.
+	 Dependencies : 
+	 - The subsystem depends on the LAB-TRK subsystem for receiving completed laboratory test results.
+	 - The subsystem depends on the REV-BIL subsystem to verify payment status before releasing reports.
+ 	 - The subsystem depends on the REF-TRK subsystem for publishing approved reports to external doctors.
+	 - The subsystem depends on the authentication and authorization service for user identity verification and role management.
+	 - The subsystem depends on the central MediChain database for storing approvals, audit logs, and final reports.
+]
 ---
 
 ## 3. Specific Requirements (Agile Approach)

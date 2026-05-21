@@ -14,21 +14,21 @@ Provide a brief description of what this module does based on the project text. 
 
 | Member Name | Primary Responsibility | Assigned Tasks (Examples) | GitHub Profile |
 | :--- | :--- | :--- | :--- |
-| **Student 1 (Leader)** | Integration & Architecture | Component Diagrams, API Specs, Team Coordination | [Link] |
-| **Student 2** | Requirements & Analysis | Functional Requirements, Use Case Diagrams | [Link] |
-| **Student 3** | Process Modeling | Activity Diagrams, Business Rules Validation | [Link] |
-| **Student 4** | Data Design | ERD, Database Schema, Class Diagrams | [Link] |
-| **Student 5 (Optional)** | Interaction Design | Sequence Diagrams, Logic Flow | [Link] |
-| **Student 6 (Optional)** | UI/UX & Frontend | Wireframes, Interface Logic, User Stories | [Link] |
+| **Melad Rajoh** | Integration & Architecture | Component Diagrams, API Specs, Team Coordination | [https://github.com/meladrajoh ] |
+| **Assead Ibrahim** | Requirements & Analysis | Functional Requirements, Use Case Diagrams | [https://github.com/AsseadIbrahim] |
+| **Yousef Abbas** | Process Modeling | Activity Diagrams, Business Rules Validation | [https://github.com/YousefAbaas] |
+| **Hussein Resha** | Data Design | ERD, Database Schema, Class Diagrams | [https://github.com/Hussein-Resha] |
+| **Ali Hammoud** | Interaction Design | Sequence Diagrams, Logic Flow | [https://github.com/ali0hammoud] |
+| **Yaarub Yousef** | UI/UX & Frontend | Wireframes, Interface Logic, User Stories | [https://github.com/Yaarub123] |
 
 ---
 
 ## 🚀 Analysis & Design Progress
-- [ ] **Requirement Elicitation:** Completed list of FRs/NFRs.
-- [ ] **UML Behavioral Diagrams:** Use Case and Activity Diagrams.
-- [ ] **UML Structural Diagrams:** ERD and Class Diagrams.
-- [ ] **Dynamic Modeling:** Sequence Diagrams for core processes.
-- [ ] **Interface Design:** Low-fidelity Wireframes.
+- [X] **Requirement Elicitation:** Completed list of FRs/NFRs.
+- [X] **UML Behavioral Diagrams:** Use Case and Activity Diagrams.
+- [X] **UML Structural Diagrams:** ERD and Class Diagrams.
+- [X] **Dynamic Modeling:** Sequence Diagrams for core processes.
+- [X] **Interface Design:** Low-fidelity Wireframes.
 
 ---
 

@@ -447,7 +447,45 @@ Sequence Diagram (Interaction Design)
 
 UI/UX Wireframes (Frontend)
 
-[UI screen designs and wireframes here – Student 6 Task]
+[
+Screen 1: Medical Approval Dashboard### (لوحة تحكم الاعتماد الطبي)
+gantt
+    title SCREEN 1: MEDICAL APPROVAL
+DASHBOARD (MED-APP)
+    axisFormat %H:%M
+    section [ MediChain System ]
+    Logged in: Dr. Samer (Lab Doctor) : active, 08:00, 09:00
+    section PENDING APPROVALS
+    Sample #SAM-901 (John Doe) - Fasting Glucose : done, 08:00, 08:20
+    Sample #SAM-902 (Jane Smith) - Complete Blood : active, 08:20, 08:40
+    Sample #SAM-903 (Ali Hassan) - Lipid Profile : crit, 08:40, 09:00
+###Screen 2: Result Review & Verification Screen (شاشة مراجعة وتدقيق النتائج)
+gantt
+    title SCREEN 2: RESULT REVIEW & VERIFICATION
+    axisFormat %H:%M
+    section PATIENT DATA
+    John Doe (Age: 45 / Male) : active, 08:00, 09:00
+    section CLINICAL VALUES
+    Hemoglobin: 14.2 g/dL (NORMAL) : done, 08:00, 08:20
+    Fasting Glucose: 240 mg/dL (CRITICAL HIGH) : crit, 08:20, 08:50
+    section SYSTEM STATUS
+    [X] Financial Payment Verified (REV-BIL Linked) : active, 08:50, 09:00
+###Screen 3: Automated Locking Confirmation Dialog (نافذة تأكيد القفل الآلي)
+gantt
+    title SCREEN 3: LOCKING CONFIRMATION DIALOG
+    axisFormat %H:%M
+    section WARNING SYSTEM
+    CRITICAL WARNING: SEAL RECORD PERMANENTLY : crit, 08:00, 08:40
+    All data fields will switch to READ-ONLY mode : active, 08:40, 09:00
+###Screen 4: Secure Modification Request Window (نافذة طلب التعديل الآمن)
+gantt
+    title SCREEN 4: SECURE MODIFICATION ACCESS PATH
+    axisFormat %H:%M
+    section AUDIT SECURITY
+    User Authenticated: Dr. Samer (Lab Doctor) : active, 08:00, 08:30
+    Mandatory Reason Input (Min 15 Characters) : crit, 08:30, 09:00
+	
+]
 
 ### Appendix B: GitHub Traceability Checklist
 * **Instruction for Team Members:** Before submitting this SRS, ensure that:

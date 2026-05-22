@@ -489,6 +489,56 @@ gantt
 
 ### Appendix B: GitHub Traceability Checklist
 * **Instruction for Team Members:** Before submitting this SRS, ensure that:
-  * [ ] Every User Story in Section 3.2 has a corresponding GitHub Issue.
-  * [ ] Every GitHub Issue has an appropriate label (e.g., `enhancement`, `requirement`).
-  * [ ] Pull Requests reference the Issue IDs (e.g., `Closes #12`). 
+  * [X] Every User Story in Section 3.2 has a corresponding GitHub Issue.
+  * [X] Every GitHub Issue has an appropriate label (e.g., `enhancement`, `requirement`).
+  * [X] Pull Requests reference the Issue IDs (e.g., `Closes #12`). 
+gantt
+    title Module 7 (MED-APP) Completion Status
+    dateFormat  X
+    axisFormat %s
+    
+    section Checklist Verification
+    User Stories Linked to Issues (100%)      :done, active, 0, 100
+    GitHub Issue Labels Applied (100%)       :done, active, 0, 100
+    Pull Requests Reference Issue IDs (100%) :done, active, 0, 100
+
+### 📊  Traceability Map (Class Diagram)
+classDiagram    
+class User_Stories {      
+ +US-MED-01 Dashboard Screen    
+ +US-MED-02 Critical Range Highlight   
+ +US-MED-03 Automated Locking Dialog         +US-MED-04 Secure Modification Field
+  }  
+  class GitHub_Issues
+ {  
+   +#71 Implement Pending View      
+   +#72 Setup Out-of-Range Logic      
+   +#73 Design Read-Only Modal   
+   +#74 Build Justification Log 
+   }  
+  class Pull_Requests
+ { 
+  +PR #102 Closes #71      
+  +PR #105 Closes #72      
+  +PR #110 Closes #73     
+  +PR #115 Closes #74  
+  }   
+ class Labels_Applied
+ {       
+  +[ui/ux, requirement]      
+  +[enhancement, frontend]      
+  +[security, requirement]      
+  +[security, ui/ux]   
+  }   
+User_Stories --> GitHub_Issues : Map to   
+GitHub_Issues --> Pull_Requests : Resolved by   
+Pull_Requests --> Labels_Applied : Tagged with
+
+
+
+
+
+
+
+
+

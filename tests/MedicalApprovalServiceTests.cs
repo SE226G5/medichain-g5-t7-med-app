@@ -18,7 +18,7 @@ namespace MediChain.Module7.Tests
         public void RequestOverride_WhenReasonIsEmpty_ShouldReturnRequiredError()
         {
             string result = _service.RequestOverride("Approved_and_Locked", "");
-            Assert.Equal("Error: Modification reason is strictly required.", result); // التحقق من رفض السبب الفارغ
+            Assert.Equal("Error: Modification reason is strictly required.", result); 
         }
 
 

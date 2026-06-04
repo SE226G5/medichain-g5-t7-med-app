@@ -77,6 +77,66 @@ namespace MediChain.Module7.Services
 
             return "Report_Generation_Ready_URL_Generated";
         }
+        // --------------------------------------------------- Assead Ibrahim ---------------------------------------------------
+
+        public string ValidateApprovalRequest(
+            bool isDoctor,
+            string currentStatus,
+            bool isPaymentVerified,
+            int resultsCount)
+        {
+            if (!isDoctor)
+            {
+                return "Error: Only laboratory doctors can approve results.";
+            }
+        
+            if (currentStatus != "Ready_for_Approval")
+            {
+                return "Error: Result is not ready for approval.";
+            }
+        
+            if (!isPaymentVerified)
+            {
+                return "Error: Payment verification is required.";
+            }
+        
+            if (resultsCount <= 0)
+            {
+                return "Error: No laboratory results found.";
+            }
+        
+            return "Approval_Request_Validated";
+        }
+        
+        private bool IsApprovalRequestValid(
+            bool isDoctor,
+            string currentStatus,
+            bool isPaymentVerified,
+            int resultsCount)
+        {
+            return isDoctor
+                && currentStatus == "Ready_for_Approval"
+                && isPaymentVerified
+                && resultsCount > 0;
+        }
+        
+        public string ValidateApprovalRequestRefactored(
+            bool isDoctor,
+            string currentStatus,
+            bool isPaymentVerified,
+            int resultsCount)
+        {
+            if (!IsApprovalRequestValid(
+                isDoctor,
+                currentStatus,
+                isPaymentVerified,
+                resultsCount))
+            {
+                return "Error: Approval validation criteria not met.";
+            }
+        
+            return "Approval_Request_Validated";
+        }
     }
 }
 //------------------------------Yousef Abbas -------------------------------------------------------------------------------------------------------

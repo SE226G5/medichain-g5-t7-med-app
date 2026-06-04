@@ -79,4 +79,49 @@ namespace MediChain.Module7.Services
         }
     }
 }
-//-------------------------------------------------------------------------------------------------------------------------------------
+//------------------------------Yousef Abbas -------------------------------------------------------------------------------------------------------
+
+using System;
+
+namespace MedicalApp.Src
+{
+    public class InsuranceService
+    {
+        public double CalculatePatientCoPay(string insuranceType, int patientAge, double billAmount)
+        {
+            double coPayAmount = billAmount;
+
+            if (insuranceType == "Premium")
+            {
+                if (patientAge > 65)
+                {
+                    coPayAmount = billAmount * 0.10; 
+
+
+                    
+                }
+                else
+                {
+                    coPayAmount = billAmount * 0.20; 
+                }
+            }
+            else if (insuranceType == "Basic")
+            {
+                if (billAmount > 500)
+                {
+                    coPayAmount = billAmount * 0.50; 
+                }
+                else
+                {
+                    coPayAmount = billAmount * 0.70; 
+                }
+            }
+            else
+            {
+                coPayAmount = billAmount; 
+            }
+
+            return coPayAmount;
+        }
+    }
+}

@@ -4,7 +4,6 @@ namespace MediChain.Module7.Services
 {
     public class MedicalApprovalService
     {
-        // الدالة الأولى: التحقق من صلاحية اعتماد النتيجة وتغيير حالتها لقفلها
         public string ApproveResult(string currentStatus, bool isDoctor)
         {
             if (!isDoctor)
@@ -40,5 +39,44 @@ namespace MediChain.Module7.Services
 
             return "Override_Requested_Successfully";
         }
+        //---------------------------------------------------Hussein Resha---------------------------------------------------
+        public string GenerateReportMetadata(string sampleId, string currentStatus, bool isPaymentVerified, int resultsCount)
+        {
+            if (string.IsNullOrEmpty(sampleId))
+            {
+                return "Error: Invalid sample ID.";
+            }
+
+            if (currentStatus != "Approved_and_Locked")
+            {
+                return "Error: Cannot generate report for unapproved or unlocked results.";
+            }
+
+            if (!isPaymentVerified)
+            {
+                return "Error: Payment or insurance coverage is not verified.";
+            }
+
+            if (resultsCount <= 0)
+            {
+                return "Error: Clinical payload datastore cannot be empty.";
+            }
+
+            return "Report_Generation_Ready_URL_Generated";
+        }
+
+        public string GenerateReportMetadataRefactored(string sampleId, string currentStatus, bool isPaymentVerified, int resultsCount)
+        {
+            if (string.IsNullOrEmpty(sampleId) || 
+                currentStatus != "Approved_and_Locked" || 
+                !isPaymentVerified || 
+                resultsCount <= 0)
+            {
+                return "Error: Report generation criteria not met.";
+            }
+
+            return "Report_Generation_Ready_URL_Generated";
+        }
     }
 }
+//-------------------------------------------------------------------------------------------------------------------------------------

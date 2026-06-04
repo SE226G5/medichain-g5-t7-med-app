@@ -75,6 +75,106 @@ namespace MediChain.Module7.Tests
             string result = _service.GenerateReportMetadataRefactored("SAM-901", "Ready_for_Approval", false, 0);
             Assert.Equal("Error: Report generation criteria not met.", result);
         }
+        // =================================================================
+        // Assead Ibrahim
+        // =================================================================
+        
+        [Fact]
+        public void ValidateApprovalRequest_WhenUserIsNotDoctor_ShouldReturnDoctorError()
+        {
+            string result = _service.ValidateApprovalRequest(
+                false,
+                "Ready_for_Approval",
+                true,
+                3);
+        
+            Assert.Equal(
+                "Error: Only laboratory doctors can approve results.",
+                result);
+        }
+        
+        [Fact]
+        public void ValidateApprovalRequest_WhenStatusIsInvalid_ShouldReturnStatusError()
+        {
+            string result = _service.ValidateApprovalRequest(
+                true,
+                "Pending",
+                true,
+                3);
+        
+            Assert.Equal(
+                "Error: Result is not ready for approval.",
+                result);
+        }
+        
+        [Fact]
+        public void ValidateApprovalRequest_WhenPaymentIsNotVerified_ShouldReturnPaymentError()
+        {
+            string result = _service.ValidateApprovalRequest(
+                true,
+                "Ready_for_Approval",
+                false,
+                3);
+        
+            Assert.Equal(
+                "Error: Payment verification is required.",
+                result);
+        }
+        
+        [Fact]
+        public void ValidateApprovalRequest_WhenResultsCountIsZero_ShouldReturnResultsError()
+        {
+            string result = _service.ValidateApprovalRequest(
+                true,
+                "Ready_for_Approval",
+                true,
+                0);
+        
+            Assert.Equal(
+                "Error: No laboratory results found.",
+                result);
+        }
+        
+        [Fact]
+        public void ValidateApprovalRequest_WhenAllInputsAreValid_ShouldReturnSuccess()
+        {
+            string result = _service.ValidateApprovalRequest(
+                true,
+                "Ready_for_Approval",
+                true,
+                3);
+        
+            Assert.Equal(
+                "Approval_Request_Validated",
+                result);
+        }
+        
+        [Fact]
+        public void ValidateApprovalRequestRefactored_WhenInputsAreValid_ShouldReturnSuccess()
+        {
+            string result = _service.ValidateApprovalRequestRefactored(
+                true,
+                "Ready_for_Approval",
+                true,
+                3);
+        
+            Assert.Equal(
+                "Approval_Request_Validated",
+                result);
+        }
+        
+        [Fact]
+        public void ValidateApprovalRequestRefactored_WhenInputsAreInvalid_ShouldReturnGenericError()
+        {
+            string result = _service.ValidateApprovalRequestRefactored(
+                false,
+                "Pending",
+                false,
+                0);
+        
+            Assert.Equal(
+                "Error: Approval validation criteria not met.",
+                result);
+        }
     }
 }
-//----------------------------------------------------------------------------------------------------------------

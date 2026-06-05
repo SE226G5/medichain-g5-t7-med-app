@@ -182,3 +182,51 @@ namespace MediChain.Module7.Services
     }
 }
 
+        // -------------------------------------------------------- melad rajoh -------------------------------------------------------
+
+    
+        public string EvaluateModificationRisk(string urgency, string reasonType, bool isCriticalTest, int hoursSinceLock)
+        {
+            string riskLevel = "Standard_Review_Required";
+
+            if (isCriticalTest)
+            {
+                if (urgency == "High")
+                {
+                    riskLevel = "Critical_High_Risk_Requires_Board_Approval";
+                }
+                else
+                {
+                    riskLevel = "High_Risk_Review_Required";
+                }
+            }
+            else if (hoursSinceLock > 24)
+            {
+                riskLevel = "Delayed_Modification_Requires_Chief_Approval";
+            }
+            else if (reasonType == "Data_Entry_Typo")
+            {
+                riskLevel = "Low_Risk_Auto_Approved";
+            }
+
+            return riskLevel;
+        }
+
+    
+        public string EvaluateModificationRiskRefactored(string urgency, string reasonType, bool isCriticalTest, int hoursSinceLock)
+        {
+            if (isCriticalTest)
+            {
+                return urgency == "High" ? "Critical_High_Risk_Requires_Board_Approval" : "High_Risk_Review_Required";
+            }
+
+            return EvaluateStandardRisk(reasonType, hoursSinceLock);
+        }
+
+        private string EvaluateStandardRisk(string reasonType, int hoursSinceLock)
+        {
+            if (hoursSinceLock > 24) return "Delayed_Modification_Requires_Chief_Approval";
+            if (reasonType == "Data_Entry_Typo") return "Low_Risk_Auto_Approved";
+            
+            return "Standard_Review_Required";
+        }

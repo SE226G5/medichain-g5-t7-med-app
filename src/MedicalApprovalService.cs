@@ -141,12 +141,9 @@ namespace MediChain.Module7.Services
 }
 //------------------------------Yousef Abbas -------------------------------------------------------------------------------------------------------
 
-using System;
 
-namespace MedicalApp.Src
-{
-    public class InsuranceService
-    {
+
+    
         public double CalculatePatientCoPay(string insuranceType, int patientAge, double billAmount)
         {
             double coPayAmount = billAmount;
@@ -183,5 +180,5 @@ namespace MedicalApp.Src
 
             return coPayAmount;
         }
-    }
-}
+    
+

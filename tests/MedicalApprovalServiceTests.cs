@@ -176,8 +176,7 @@ namespace MediChain.Module7.Tests
                 "Error: Approval validation criteria not met.",
                 result);
         }
-    }
-}
+   
 
         // =================================================================
         // melad rajoh
@@ -224,3 +223,5 @@ namespace MediChain.Module7.Tests
             string result = _service.EvaluateModificationRiskRefactored("High", "Clinical", true, 5);
             Assert.Equal("Critical_High_Risk_Requires_Board_Approval", result);
         }
+    }
+}

@@ -176,7 +176,48 @@ namespace MediChain.Module7.Tests
                 "Error: Approval validation criteria not met.",
                 result);
         }
-   
+   //=============================================
+        // yousef abbas
+        //=========================
+        
+
+        [Fact]
+        public void CalculatePatientCoPay_PremiumAndElderly_ReturnsTenPercent()
+        {
+            double result = _insuranceService.CalculatePatientCoPay("Premium", 70, 1000);
+            Assert.Equal(100, result);
+        }
+
+        [Fact]
+        public void CalculatePatientCoPay_PremiumAndYoung_ReturnsTwentyPercent()
+        {
+            double result = _insuranceService.CalculatePatientCoPay("Premium", 30, 1000);
+            Assert.Equal(200, result);
+        }
+
+        [Fact]
+        public void CalculatePatientCoPay_BasicAndHighBill_ReturnsFiftyPercent()
+        {
+            double result = _insuranceService.CalculatePatientCoPay("Basic", 30, 1000);
+            Assert.Equal(500, result);
+        }
+
+        [Fact]
+        public void CalculatePatientCoPay_BasicAndLowBill_ReturnsSeventyPercent()
+        {
+            double result = _insuranceService.CalculatePatientCoPay("Basic", 30, 200);
+            Assert.Equal(140, result);
+        }
+
+        [Fact]
+        public void CalculatePatientCoPay_NoInsurance_ReturnsFullBill()
+        {
+            double result = _insuranceService.CalculatePatientCoPay("None", 30, 1000);
+            Assert.Equal(1000, result);
+        }
+    }
+}
+
 
         // =================================================================
         // melad rajoh

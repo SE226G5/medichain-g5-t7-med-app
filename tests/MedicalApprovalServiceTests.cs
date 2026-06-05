@@ -215,9 +215,6 @@ namespace MediChain.Module7.Tests
             double result = _insuranceService.CalculatePatientCoPay("None", 30, 1000);
             Assert.Equal(1000, result);
         }
-    }
-}
-
 
         // =================================================================
         // melad rajoh

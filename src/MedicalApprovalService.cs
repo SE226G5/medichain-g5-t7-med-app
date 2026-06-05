@@ -137,8 +137,7 @@ namespace MediChain.Module7.Services
         
             return "Approval_Request_Validated";
         }
-    }
-}
+ 
 //------------------------------Yousef Abbas -------------------------------------------------------------------------------------------------------
 
 
@@ -180,5 +179,6 @@ namespace MediChain.Module7.Services
 
             return coPayAmount;
         }
-    
+    }
+}
 

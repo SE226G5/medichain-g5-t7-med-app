@@ -178,3 +178,49 @@ namespace MediChain.Module7.Tests
         }
     }
 }
+
+        // =================================================================
+        // melad rajoh
+        // =================================================================
+
+        [Fact]
+        public void EvaluateRisk_CriticalAndHighUrgency_ShouldReturnBoardApproval()
+        {
+            string result = _service.EvaluateModificationRisk("High", "Clinical", true, 5);
+            Assert.Equal("Critical_High_Risk_Requires_Board_Approval", result);
+        }
+
+        [Fact]
+        public void EvaluateRisk_CriticalAndLowUrgency_ShouldReturnHighRiskReview()
+        {
+            string result = _service.EvaluateModificationRisk("Low", "Clinical", true, 5);
+            Assert.Equal("High_Risk_Review_Required", result);
+        }
+
+        [Fact]
+        public void EvaluateRisk_NotCriticalAndDelayed_ShouldReturnChiefApproval()
+        {
+            string result = _service.EvaluateModificationRisk("Low", "Clinical", false, 30);
+            Assert.Equal("Delayed_Modification_Requires_Chief_Approval", result);
+        }
+
+        [Fact]
+        public void EvaluateRisk_NotCriticalAndTypo_ShouldReturnAutoApproved()
+        {
+            string result = _service.EvaluateModificationRisk("Low", "Data_Entry_Typo", false, 5);
+            Assert.Equal("Low_Risk_Auto_Approved", result);
+        }
+
+        [Fact]
+        public void EvaluateRisk_StandardScenario_ShouldReturnStandardReview()
+        {
+            string result = _service.EvaluateModificationRisk("Low", "General", false, 2);
+            Assert.Equal("Standard_Review_Required", result);
+        }
+
+        [Fact]
+        public void EvaluateRiskRefactored_CriticalHighUrgency_ShouldReturnBoardApproval()
+        {
+            string result = _service.EvaluateModificationRiskRefactored("High", "Clinical", true, 5);
+            Assert.Equal("Critical_High_Risk_Requires_Board_Approval", result);
+        }

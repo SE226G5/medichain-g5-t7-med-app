@@ -179,8 +179,7 @@ namespace MediChain.Module7.Services
 
             return coPayAmount;
         }
-    }
-}
+   
 
         // -------------------------------------------------------- melad rajoh -------------------------------------------------------
 
@@ -230,3 +229,5 @@ namespace MediChain.Module7.Services
             
             return "Standard_Review_Required";
         }
+    }
+}    

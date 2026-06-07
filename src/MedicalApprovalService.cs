@@ -136,13 +136,12 @@ namespace MediChain.Module7.Services
             }
         
             return "Approval_Request_Validated";
-        }
- 
-//------------------------------Yousef Abbas -------------------------------------------------------------------------------------------------------
+        }}
 
 
 
-    
+                //------------------------------Yousef Abbas -------------------------------------------------------------------------------------------------------
+
         public double CalculatePatientCoPay(string insuranceType, int patientAge, double billAmount)
         {
             double coPayAmount = billAmount;
@@ -152,9 +151,6 @@ namespace MediChain.Module7.Services
                 if (patientAge > 65)
                 {
                     coPayAmount = billAmount * 0.10; 
-
-
-                    
                 }
                 else
                 {
@@ -178,6 +174,19 @@ namespace MediChain.Module7.Services
             }
 
             return coPayAmount;
+        }
+)
+        public double CalculatePatientCoPayRefactored(string insuranceType, int patientAge, double billAmount)
+        {
+            if (insuranceType == "Premium")
+                return patientAge > 65 ? billAmount * 0.10 : billAmount * 0.20;
+
+            if (insuranceType == "Basic")
+                return billAmount > 500 ? billAmount * 0.50 : billAmount * 0.70;
+
+            return billAmount;
+        }
+
         }
         // =================================================================
         // Yaarub Yousef
@@ -224,6 +233,55 @@ namespace MediChain.Module7.Services
 
             return "Billing_Pending_Review";
         }
+                    
+        
+        // =================================================================
+        // Yaarub Yousef
+        // =================================================================
+        
+        public string VerifyBillingStatus(string claimStatus, bool hasValidInsurance, double coveragePercentage, int daysOverdue)
+        {
+            string statusResult = "Billing_Pending_Review";
+
+            if (!hasValidInsurance)
+            {
+                if (daysOverdue > 30)
+                {
+                    statusResult = "Rejected_Collection_Agency";
+                }
+                else
+                {
+                    statusResult = "Rejected_Self_Pay_Required";
+                }
+            }
+            else if (claimStatus == "Disputed")
+            {
+                statusResult = "On_Hold_Legal_Audit";
+            }
+            else if (coveragePercentage >= 0.80)
+            {
+                statusResult = "Approved_Auto_Disbursement";
+            }
+
+            return statusResult;
+        }
+
+        public string VerifyBillingStatusRefactored(string claimStatus, bool hasValidInsurance, double coveragePercentage, int daysOverdue)
+        {
+            if (!hasValidInsurance)
+            {
+                {
+                    return daysOverdue > 30 ? "Rejected_Collection_Agency" : "Rejected_Self_Pay_Required";
+                }
+            }
+
+            if (claimStatus == "Disputed") return "On_Hold_Legal_Audit";
+            if (coveragePercentage >= 0.80) return "Approved_Auto_Disbursement";
+
+            return "Billing_Pending_Review";
+        }
+    
+        
    
 
         // -------------------------------------------------------- melad rajoh -------------------------------------------------------

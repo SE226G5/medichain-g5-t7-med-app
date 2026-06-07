@@ -218,7 +218,51 @@ namespace MediChain.Module7.Tests
             double result = _service.CalculatePatientCoPay("None", 30, 1000);
             Assert.Equal(1000, result);
         }
+// =================================================================
+        // Yaarub Yousef
+        // =================================================================
+        
+        [Fact]
+        public void VerifyBillingStatus_NoInsuranceAndOverdue_ReturnsCollectionAgency()
+        {
+            string result = _service.VerifyBillingStatus("Normal", false, 0.50, 45);
+            Assert.Equal("Rejected_Collection_Agency", result);
+        }
 
+        [Fact]
+        public void VerifyBillingStatus_NoInsuranceAndNotOverdue_ReturnsSelfPayRequired()
+        {
+            string result = _service.VerifyBillingStatus("Normal", false, 0.50, 15);
+            Assert.Equal("Rejected_Self_Pay_Required", result);
+        }
+
+        [Fact]
+        public void VerifyBillingStatus_InsuranceDisputed_ReturnsLegalAudit()
+        {
+            string result = _service.VerifyBillingStatus("Disputed", true, 0.50, 10);
+            Assert.Equal("On_Hold_Legal_Audit", result);
+        }
+
+        [Fact]
+        public void VerifyBillingStatus_HighCoverage_ReturnsAutoDisbursement()
+        {
+            string result = _service.VerifyBillingStatus("Normal", true, 0.85, 10);
+            Assert.Equal("Approved_Auto_Disbursement", result);
+        }
+
+        [Fact]
+        public void VerifyBillingStatus_DefaultScenario_ReturnsPendingReview()
+        {
+            string result = _service.VerifyBillingStatus("Normal", true, 0.50, 10);
+            Assert.Equal("Billing_Pending_Review", result);
+        }
+
+        [Fact]
+        public void VerifyBillingStatusRefactored_ValidScenario_ReturnsCorrectStatus()
+        {
+            string result = _service.VerifyBillingStatusRefactored("Disputed", true, 0.50, 10);
+            Assert.Equal("On_Hold_Legal_Audit", result);
+        }
 
         // =================================================================
         // melad rajoh

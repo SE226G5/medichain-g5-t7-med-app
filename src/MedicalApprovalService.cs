@@ -179,6 +179,51 @@ namespace MediChain.Module7.Services
 
             return coPayAmount;
         }
+        // =================================================================
+        // Yaarub Yousef
+        // =================================================================
+        
+        public string VerifyBillingStatus(string claimStatus, bool hasValidInsurance, double coveragePercentage, int daysOverdue)
+        {
+            string statusResult = "Billing_Pending_Review";
+
+            if (!hasValidInsurance)
+            {
+                if (daysOverdue > 30)
+                {
+                    statusResult = "Rejected_Collection_Agency";
+                }
+                else
+                {
+                    statusResult = "Rejected_Self_Pay_Required";
+                }
+            }
+            else if (claimStatus == "Disputed")
+            {
+                statusResult = "On_Hold_Legal_Audit";
+            }
+            else if (coveragePercentage >= 0.80)
+            {
+                statusResult = "Approved_Auto_Disbursement";
+            }
+
+            return statusResult;
+        }
+
+        public string VerifyBillingStatusRefactored(string claimStatus, bool hasValidInsurance, double coveragePercentage, int daysOverdue)
+        {
+            if (!hasValidInsurance)
+            {
+                {
+                    return daysOverdue > 30 ? "Rejected_Collection_Agency" : "Rejected_Self_Pay_Required";
+                }
+            }
+
+            if (claimStatus == "Disputed") return "On_Hold_Legal_Audit";
+            if (coveragePercentage >= 0.80) return "Approved_Auto_Disbursement";
+
+            return "Billing_Pending_Review";
+        }
    
 
         // -------------------------------------------------------- melad rajoh -------------------------------------------------------

@@ -183,10 +183,11 @@ namespace MediChain.Module7.Tests
         // yousef abbas
         //=========================
         
+        
+       
         [Fact]
         public void CalculatePatientCoPay_PremiumAndElderly_ReturnsTenPercent()
         {
-            
             double result = _service.CalculatePatientCoPay("Premium", 70, 1000);
             Assert.Equal(100, result);
         }
@@ -218,6 +219,24 @@ namespace MediChain.Module7.Tests
             double result = _service.CalculatePatientCoPay("None", 30, 1000);
             Assert.Equal(1000, result);
         }
+
+        
+        [Fact]
+        public void CalculatePatientCoPay_AgeExactlySixtyFive_ShouldNotGetElderlyDiscount()
+        {
+            
+            double result = _service.CalculatePatientCoPay("Premium", 65, 1000);
+            Assert.Equal(200, result); 
+        }
+
+        [Fact]
+        public void CalculatePatientCoPay_BillExactlyFiveHundred_ShouldNotGetHighBillDiscount()
+        {
+    
+            double result = _service.CalculatePatientCoPay("Basic", 30, 500);
+            Assert.Equal(350, result); 
+        }
+
 // =================================================================
         // Yaarub Yousef
         // =================================================================

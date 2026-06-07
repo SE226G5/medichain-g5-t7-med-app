@@ -39,6 +39,7 @@ namespace MediChain.Module7.Services
 
             return "Override_Requested_Successfully";
         }
+
         //---------------------------------------------------Hussein Resha---------------------------------------------------
         public string GenerateReportMetadata(string sampleId, string currentStatus, bool isPaymentVerified, int resultsCount)
         {
@@ -77,8 +78,8 @@ namespace MediChain.Module7.Services
 
             return "Report_Generation_Ready_URL_Generated";
         }
-        // --------------------------------------------------- Assead Ibrahim ---------------------------------------------------
 
+        // --------------------------------------------------- Assead Ibrahim ---------------------------------------------------
         public string ValidateApprovalRequest(
             bool isDoctor,
             string currentStatus,
@@ -136,12 +137,9 @@ namespace MediChain.Module7.Services
             }
         
             return "Approval_Request_Validated";
-        }}
+        }
 
-
-
-                //------------------------------Yousef Abbas -------------------------------------------------------------------------------------------------------
-
+        //------------------------------Yousef Abbas -------------------------------------------------------------------------------------------------------
         public double CalculatePatientCoPay(string insuranceType, int patientAge, double billAmount)
         {
             double coPayAmount = billAmount;
@@ -152,6 +150,132 @@ namespace MediChain.Module7.Services
                 {
                     coPayAmount = billAmount * 0.10; 
                 }
+                else
+                {
+                    coPayAmount = billAmount * 0.20; 
+                }
+            }
+            else if (insuranceType == "Basic")
+            {
+                if (billAmount > 500)
+                {
+                    coPayAmount = billAmount * 0.50; 
+                }
+                else
+                {
+                    coPayAmount = billAmount * 0.70; 
+                }
+            }
+            else
+            {
+                coPayAmount = billAmount; 
+            }
+
+            return coPayAmount;
+        }
+
+        public double CalculatePatientCoPayRefactored(string insuranceType, int patientAge, double billAmount)
+        {
+            if (insuranceType == "Premium")
+                return patientAge > 65 ? billAmount * 0.10 : billAmount * 0.20;
+
+            if (insuranceType == "Basic")
+                return billAmount > 500 ? billAmount * 0.50 : billAmount * 0.70;
+
+            return billAmount;
+        }
+
+        // =================================================================
+        // Yaarub Yousef
+        // =================================================================
+        public string VerifyBillingStatus(string claimStatus, bool hasValidInsurance, double coveragePercentage, int daysOverdue)
+        {
+            string statusResult = "Billing_Pending_Review";
+
+            if (!hasValidInsurance)
+            {
+                if (daysOverdue > 30)
+                {
+                    statusResult = "Rejected_Collection_Agency";
+                }
+                else
+                {
+                    statusResult = "Rejected_Self_Pay_Required";
+                }
+            }
+            else if (claimStatus == "Disputed")
+            {
+                statusResult = "On_Hold_Legal_Audit";
+            }
+            else if (coveragePercentage >= 0.80)
+            {
+                statusResult = "Approved_Auto_Disbursement";
+            }
+
+            return statusResult;
+        }
+
+        public string VerifyBillingStatusRefactored(string claimStatus, bool hasValidInsurance, double coveragePercentage, int daysOverdue)
+        {
+            if (!hasValidInsurance)
+            {
+                return daysOverdue > 30 ? "Rejected_Collection_Agency" : "Rejected_Self_Pay_Required";
+            }
+
+            if (claimStatus == "Disputed") return "On_Hold_Legal_Audit";
+            if (coveragePercentage >= 0.80) return "Approved_Auto_Disbursement";
+
+            return "Billing_Pending_Review";
+        }
+
+        // -------------------------------------------------------- melad rajoh -------------------------------------------------------
+        public string EvaluateModificationRisk(string urgency, string reasonType, bool isCriticalTest, int hoursSinceLock)
+        {
+            string riskLevel = "Standard_Review_Required";
+
+            if (isCriticalTest)
+            {
+                if (urgency == "High")
+                {
+                    riskLevel = "Critical_High_Risk_Requires_Board_Approval";
+                }
+                else
+                {
+                    riskLevel = "High_Risk_Review_Required";
+                }
+            }
+            else if (hoursSinceLock > 24)
+            {
+                riskLevel = "Delayed_Modification_Requires_Chief_Approval";
+            }
+            else if (reasonType == "Data_Entry_Typo")
+            {
+                riskLevel = "Low_Risk_Auto_Approved";
+            }
+
+            return riskLevel;
+        }
+
+        public string EvaluateModificationRiskRefactored(string urgency, string reasonType, bool isCriticalTest, int hoursSinceLock)
+        {
+            if (isCriticalTest)
+            {
+                return urgency == "High" ? "Critical_High_Risk_Requires_Board_Approval" : "High_Risk_Review_Required";
+            }
+
+            return EvaluateStandardRisk(reasonType, hoursSinceLock);
+        }
+
+        private string EvaluateStandardRisk(string reasonType, int hoursSinceLock)
+        {
+            if (hoursSinceLock > 24) return "Delayed_Modification_Requires_Chief_Approval";
+            if (reasonType == "Data_Entry_Typo") return "Low_Risk_Auto_Approved";
+            
+            return "Standard_Review_Required";
+        }
+    }
+}
+
                 else
                 {
                     coPayAmount = billAmount * 0.20; 

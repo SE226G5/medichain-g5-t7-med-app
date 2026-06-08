@@ -39,6 +39,60 @@ namespace MediChain.Module7.Services
 
             return "Override_Requested_Successfully";
         }
+    
+        // --------------------------------------------- Ali Hammoud -----------------------------------------------------
+
+        
+        public string DetermineSurgeryPriority(string triageLevel, bool isORAvailable, int patientAge, bool hasPreExistingConditions)
+        {
+            string priorityResult = "Schedule_Routine_Slot";
+
+            if (string.IsNullOrEmpty(triageLevel))
+            {
+                priorityResult = "Error: Triage level must be specified.";
+            }
+            else if (triageLevel == "Critical_Emergency")
+            {
+                if (!isORAvailable)
+                {
+                    priorityResult = "Redirect_To_Nearest_Hospital_ICU";
+                }
+                else
+                {
+                    priorityResult = "Schedule_Immediate_Surgery";
+                }
+            }
+            else if (triageLevel == "Urgent")
+            {
+                if (patientAge > 70 || hasPreExistingConditions)
+                {
+                    priorityResult = "Schedule_Within_2_Hours";
+                }
+                else
+                {
+                    priorityResult = "Schedule_Within_6_Hours";
+                }
+            }
+
+            return priorityResult;
+        }
+
+        public string DetermineSurgeryPriorityRefactored(string triageLevel, bool isORAvailable, int patientAge, bool hasPreExistingConditions)
+        {
+            if (string.IsNullOrEmpty(triageLevel))
+            {
+                return "Error: Triage level must be specified.";
+            }
+
+            return triageLevel switch
+            {
+                "Critical_Emergency" => isORAvailable ? "Schedule_Immediate_Surgery" : "Redirect_To_Nearest_Hospital_ICU",
+                "Urgent" when (patientAge > 70 || hasPreExistingConditions) => "Schedule_Within_2_Hours",
+                "Urgent" => "Schedule_Within_6_Hours",
+                _ => "Schedule_Routine_Slot"
+            };
+        }
+
     }
 }
 
